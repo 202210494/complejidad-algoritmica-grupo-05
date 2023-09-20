@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import date
 
 
 class SocialMediaDatabaseManager:
@@ -16,7 +17,7 @@ class SocialMediaDatabaseManager:
         password: str,
         first_name: str,
         last_name: str,
-        date_of_birth: str,
+        date_of_birth: date,
         country: str,
         phone_number: str,
     ) -> bool:
