@@ -1,6 +1,6 @@
 from faker import Faker
 
-from user_database_manager import SocialMediaDatabaseManager
+from database_manager import SocialMediaDatabaseManager
 
 # Inicializar clases
 db_manager = SocialMediaDatabaseManager()
