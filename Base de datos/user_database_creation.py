@@ -14,7 +14,7 @@ cursor.execute(
         last_name TEXT NOT NULL,
         date_of_birth DATE,
         country TEXT,
-        phone_number TEXT,
+        phone_number TEXT UNIQUE,
         joined_date DATE DEFAULT CURRENT_TIMESTAMP
     )
 """
