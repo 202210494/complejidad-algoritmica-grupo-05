@@ -1,7 +1,7 @@
 1. Redactar la descripción y fundamentación del problema citando fuentes.
 2. Descripción y visualización de datos:
-   1. Redactar las caracteristicas y el origen de los datos motivo de análisis.
-   2. Mencionar el número de nodos identificados.
+   1. ~~Redactar las caracteristicas y el origen de los datos motivo de análisis.~~
+   2. ~~Mencionar el número de nodos identificados.~~
    3. Mostrar mediante un grafo los datos recolectados.
 3. Propuesta:
    1. Redactar de forma preliminar el objetivo, técnica y metodologia a realizar.
@@ -20,15 +20,15 @@ En la tabla `users`, se almacenan los detalles de los usuarios, que en el contex
 
 Estos datos incluyen aquella información selecciondada para satisfacer las necesidades de nuestra red social. Los campos incluyen:
 
-- Nombre de usuario (`username`)
-- Correo electrónico (`email`)
-- Contraseña (`password`)
-- Nombre (`first_name`)
-- Apellido (`last_name`)
-- Fecha de nacimiento (`date_of_birth`)
-- País de residencia (`country`)
-- Número de teléfono (`phone_number`)
-- Fecha de registro (`joined_date`)
+- `username`: Nombre de usuario
+- `email`: Correo electrónico
+- `password`: Contraseña
+- `first_name`: Nombre
+- `last_name`: Apellido
+- `date_of_birth`: Fecha de nacimiento
+- `country`: País de residencia
+- `phone_number`: Número de teléfono
+- `joined_date`: Fecha de registro
 
 Por otro lado, la tabla `user_followers` almacena las relaciones entre los usuarios, es decir, a quiénes siguen los usuarios. En el contexto del proyecto, esta tabla almacena las aristas o conexiones entre los nodos.
 
@@ -43,7 +43,7 @@ Para generar estos datos, se han implementado dos scripts en Python que se encue
 >
 > Este archivo procesa cada usuario en la tabla `users`, utilizando la biblioteca `random` de Python para determinar aleatoriamente a cuántos usuarios seguirá el usuario en cuestión, y luego añade esas relaciones a la base de datos en la tabla correspondiente.
 >
-> Es importante destacar que resulta complicado determinar la cantidad exacta de aristas que contendrá nuestro conjunto de datos debido a su naturaleza aleatoria. Sin embargo, se estima que habrá aproximadamente alrededor de **37500** conexiones entre usuarios o, en el contexto de nuestro proyecto, aristas.
+> Es importante destacar que resulta complicado determinar la cantidad exacta de aristas que contendrá nuestro conjunto de datos debido a su naturaleza aleatoria. Sin embargo, se estima que habrá aproximadamente alrededor de **37500** aristas o, en el contexto de nuestro proyecto, conexiones entre usuarios.
 
 
 ## Nuestra propuesta
