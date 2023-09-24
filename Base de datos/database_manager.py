@@ -93,3 +93,35 @@ class SocialMediaDatabaseManager:
 
         except sqlite3.Error:
             return False
+
+    def get_following(self, username) -> tuple[bool, list[str]]:
+        try:
+            self.cursor.execute(
+                """
+                SELECT user_followed
+                FROM user_followers
+                WHERE user = ?
+            """,
+                (username,),
+            )
+            following = [row[0] for row in self.cursor.fetchall()]
+            return True, following
+
+        except sqlite3.Error:
+            return False, []
+
+    def get_followers(self, username) -> tuple[bool, list[str]]:
+        try:
+            self.cursor.execute(
+                """
+                SELECT user
+                FROM user_followers
+                WHERE user_followed = ?
+            """,
+                (username,),
+            )
+            followers = [row[0] for row in self.cursor.fetchall()]
+            return True, followers
+
+        except sqlite3.Error:
+            return False, []
