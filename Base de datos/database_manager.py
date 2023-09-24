@@ -53,6 +53,15 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False
 
+    def get_all_users(self) -> tuple[bool, list[str]]:
+        try:
+            self.cursor.execute("SELECT username FROM users")
+            all_users = [row[0] for row in self.cursor.fetchall()]
+            return True, all_users
+
+        except sqlite3.Error:
+            return False, []
+
     def add_follow_relationship(self, username, username_followed) -> bool:
         try:
             self.cursor.execute(
