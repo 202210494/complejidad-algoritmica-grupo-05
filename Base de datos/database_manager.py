@@ -44,9 +44,41 @@ class SocialMediaDatabaseManager:
         except sqlite3.IntegrityError:
             return False
 
-    def remove_user(self, username):
+    def remove_user(self, username) -> bool:
         try:
             self.cursor.execute("DELETE FROM users WHERE username = ?", (username,))
+            self.conn.commit()
+            return True
+
+        except sqlite3.Error:
+            return False
+
+    def add_follow_relationship(self, username, username_followed) -> bool:
+        try:
+            self.cursor.execute(
+                """
+                INSERT INTO user_followers (user, user_followed)
+                VALUES (?, ?)
+            """,
+                (username, username_followed),
+            )
+
+            self.conn.commit()
+            return True
+
+        except sqlite3.Error:
+            return False
+
+    def remove_follow_relationship(self, username, username_followed) -> bool:
+        try:
+            self.cursor.execute(
+                """
+                DELETE FROM user_followers
+                WHERE user = ? AND user_followed = ?
+            """,
+                (username, username_followed),
+            )
+
             self.conn.commit()
             return True
 
