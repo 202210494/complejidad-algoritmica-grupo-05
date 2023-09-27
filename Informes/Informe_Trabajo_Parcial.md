@@ -1,6 +1,10 @@
 # Informe trabajo parcial
 
-## Descripción y Fundamentación del Problema
+## Descripción y Fundamentación del Problema   
+
+Según Freire & Ocaña (2021), el problema que abordaremos en este proyecto se centra en la creación y optimización de una red social que conecte a usuarios. La necesidad de resolver este problema radica en la creciente importancia de las redes sociales en la sociedad actual. Conectar a usuarios de manera eficiente y ofrecer una experiencia satisfactoria es fundamental para el éxito de una plataforma de este tipo.
+
+La fundamentación de este problema se basa en la relevancia de las redes sociales en la actualidad. Estas plataformas no solo son herramientas de comunicación, sino también espacios de interacción, difusión de información y generación de comunidades en línea. Una red social efectiva puede influir en la opinión pública, facilitar la colaboración y proporcionar oportunidades comerciales.
 
 ## Descripción y Visualización de Datos
 
@@ -48,6 +52,7 @@ La razón detrás de esta decisión radica en la imposibilidad de visualizar la 
 A continuación, se muestra la representación gráfica del grafo generado a partir de esta muestra.<br>
 En este contexto, cada nodo representa a un usuario, y cada arista simboliza una conexión del tipo "sigue a":
 
+
 ![Grafo 200 nodos, ~1500 aristass](../Base%20de%20datos/Visualizacion/grafo_200_15.png)
 
 
@@ -68,3 +73,6 @@ Las partes que componen cada sprint son:
 > Revision de cumplimiento (Cierre)
 
 ## Fuentes
+Freire, T., & Ocaña, P. (2021). Impacto de la gestión de redes sociales en las empresas gastrononómicas.
+https://preprints.scielo.org/index.php/scielo/preprint/download/2556/4414/4583
+
