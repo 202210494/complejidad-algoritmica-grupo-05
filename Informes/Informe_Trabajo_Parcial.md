@@ -48,4 +48,20 @@ Para generar estos datos, se han implementado dos scripts en Python que se encue
 
 ## Nuestra propuesta
 
+
+### Objetivos
+
+Nuestro objetivo como grupo es aplicar algoritmos de busquesa para la elaboracion de una red social con funcionalidades basicas. Asimismo, buscamos optmizar procesos y algoritmos para una mejor eficienica y experiencia en los usuarios.
+
+
+### Tecnica y Metodologia
+
+La metologia usada en este proyecto se basa en la metologia agil. Hemos divido el proyecto en sprints, lo cuales nos permiten una mejor organicazion en cuestion a los objetivos.
+
+Las partes que componen cada sprint son:
+
+> Objetivos de sprints (Inicio)
+> Seguimiento diario (Desarrollo)
+> Revision de cumplimiento (Cierre)
+
 ## Fuentes
