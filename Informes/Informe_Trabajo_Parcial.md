@@ -45,8 +45,15 @@ Para generar estos datos, se han implementado dos scripts en Python que se encue
 >
 > Es importante destacar que resulta complicado determinar la cantidad exacta de aristas que contendrá nuestro conjunto de datos debido a su naturaleza aleatoria. Sin embargo, se estima que habrá aproximadamente alrededor de **37500** aristas o, en el contexto de nuestro proyecto, conexiones entre usuarios.
 
-<iframe width="100%" height="600" src="../Base de datos/Visualizacion/grafo.html"></iframe>
+### Visualización de los datos
 
+Para llevar a cabo la visualización de los datos, se ha desarrollado el script [visualizacion_datos.py](../Base%20de%20datos/visualizacion_datos.py), el cual hace uso de la biblioteca [pyvis](https://github.com/WestHealth/pyvis). Esta biblioteca nos proporcionó las herramientas necesarias para poder generar una visualización del grafo con el que trabajaremos.
+
+Para realizar esta visualización no se emplearon todos los datos disponibles, sino simplemente una muestra representativa que incluye 200 nodos y aproximadamente 1500 aristas. La razón detrás de esta desición es que la visualización completa de todos los datos resulta imposible debido a su volumen.
+
+A continuación, se muestra la representación gráfica del grafo generado a partir de esta muestra:
+
+![Grafo 200 nodos, ~1500 aristass](../Base%20de%20datos/Visualizacion/grafo_200_15.png)
 
 ## Nuestra propuesta
 
