@@ -35,17 +35,33 @@ Por otro lado, la tabla `user_followers` almacena las relaciones entre los usuar
 ### Origen de los datos
 Para generar estos datos, se han implementado dos scripts en Python que se encuentran en los archivos [user_generation.py](https://github.com/202210494/complejidad-algoritmica-grupo-05/blob/main/Base%20de%20datos/user_generation.py) y [followers_generation.py](https://github.com/202210494/complejidad-algoritmica-grupo-05/blob/main/Base%20de%20datos/followers_generation.py).
 
-> `user_generation.py`
->
+`user_generation.py`
+
 > Este archivo emplea la biblioteca [Faker](https://github.com/joke2k/faker) para generar datos ficticios de **1500** posibles usuarios y los incorpora en la base de datos.
 
-> `followers_generation.py`
->
+`followers_generation.py`
+
 > Este archivo procesa cada usuario en la tabla `users`, utilizando la biblioteca `random` de Python para determinar aleatoriamente a cuántos usuarios seguirá el usuario en cuestión, y luego añade esas relaciones a la base de datos en la tabla correspondiente.
 >
 > Es importante destacar que resulta complicado determinar la cantidad exacta de aristas que contendrá nuestro conjunto de datos debido a su naturaleza aleatoria. Sin embargo, se estima que habrá aproximadamente alrededor de **37500** aristas o, en el contexto de nuestro proyecto, conexiones entre usuarios.
 
 
 ## Nuestra propuesta
+
+
+### Objetivos
+
+Nuestro objetivo como grupo es aplicar algoritmos de busqueda para la elaboracion de una red social con funcionalidades basicas. Asimismo, buscamos optmizar procesos y algoritmos para una mejor eficienica y experiencia en los usuarios.
+
+
+### Tecnica y Metodologia
+
+La metologia utilizada en este proyecto se basa en la metologia ágil. Hemos divido el proyecto en sprints, lo cuales nos permiten una mejor organicazion en cuestion a los objetivos.
+
+Las partes que componen cada sprint son:
+
+> Objetivos de sprints (Inicio)<br>
+> Seguimiento diario (Desarrollo)<br>
+> Revision de cumplimiento (Cierre)
 
 ## Fuentes
