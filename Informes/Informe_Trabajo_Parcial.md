@@ -4,7 +4,7 @@
    2. ~~Mencionar el número de nodos identificados.~~
    3. ~~Mostrar mediante un grafo los datos recolectados.~~
 3. Propuesta:
-   1. Redactar de forma preliminar el objetivo, técnica y metodologia a realizar.
+   1. ~~Redactar de forma preliminar el objetivo, técnica y metodologia a realizar.~~
 
 # Informe trabajo parcial
 
