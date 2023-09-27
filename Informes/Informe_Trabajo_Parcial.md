@@ -2,7 +2,7 @@
 2. Descripción y visualización de datos:
    1. ~~Redactar las caracteristicas y el origen de los datos motivo de análisis.~~
    2. ~~Mencionar el número de nodos identificados.~~
-   3. Mostrar mediante un grafo los datos recolectados.
+   3. ~~Mostrar mediante un grafo los datos recolectados.~~
 3. Propuesta:
    1. Redactar de forma preliminar el objetivo, técnica y metodologia a realizar.
 
@@ -47,21 +47,22 @@ Para generar estos datos, se han implementado dos scripts en Python que se encue
 
 ### Visualización de los datos
 
-Para llevar a cabo la visualización de los datos, se ha desarrollado el script [visualizacion_datos.py](../Base%20de%20datos/visualizacion_datos.py), el cual hace uso de la biblioteca [pyvis](https://github.com/WestHealth/pyvis). Esta biblioteca nos proporcionó las herramientas necesarias para poder generar una visualización del grafo con el que trabajaremos.
+Para llevar a cabo la visualización de los datos, se ha desarrollado el script [visualizacion_datos.py](../Base%20de%20datos/visualizacion_datos.py), el cual hace uso de la biblioteca [pyvis](https://github.com/WestHealth/pyvis).
+Esta biblioteca nos ha proporcionado las herramientas necesarias para generar una visualización del grafo con el que trabajaremos.
 
-Para realizar esta visualización no se emplearon todos los datos disponibles, sino simplemente una muestra representativa que incluye 200 nodos y aproximadamente 1500 aristas. La razón detrás de esta desición es que la visualización completa de todos los datos resulta imposible debido a su volumen.
+Para realizar esta visualización no se emplearon todos los datos disponibles, sino simplemente una muestra representativa que consta de `200` nodos y aproximadamente `1500` aristas.
+La razón detrás de esta decisión radica en la imposibilidad de visualizar la totalidad de los datos debido a su volumen.
 
 A continuación, se muestra la representación gráfica del grafo generado a partir de esta muestra:
 
 ![Grafo 200 nodos, ~1500 aristass](../Base%20de%20datos/Visualizacion/grafo_200_15.png)
 
-## Nuestra propuesta
 
+## Nuestra propuesta
 
 ### Objetivos
 
 Nuestro objetivo como grupo es aplicar algoritmos de busqueda para la elaboracion de una red social con funcionalidades basicas. Asimismo, buscamos optmizar procesos y algoritmos para una mejor eficienica y experiencia en los usuarios.
-
 
 ### Tecnica y Metodologia
 
