@@ -45,6 +45,8 @@ Para generar estos datos, se han implementado dos scripts en Python que se encue
 >
 > Es importante destacar que resulta complicado determinar la cantidad exacta de aristas que contendrá nuestro conjunto de datos debido a su naturaleza aleatoria. Sin embargo, se estima que habrá aproximadamente alrededor de **37500** aristas o, en el contexto de nuestro proyecto, conexiones entre usuarios.
 
+<iframe width="100%" height="600" src="../Base de datos/Visualizacion/grafo.html"></iframe>
+
 
 ## Nuestra propuesta
 
