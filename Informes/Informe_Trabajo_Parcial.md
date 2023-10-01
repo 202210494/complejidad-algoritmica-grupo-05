@@ -60,11 +60,15 @@ En este contexto, cada nodo representa a un usuario, y cada arista simboliza una
 
 ### Objetivos
 
-Nuestro objetivo como grupo es aplicar algoritmos de busqueda para la elaboracion de una red social con funcionalidades basicas. Asimismo, buscamos optmizar procesos y algoritmos para una mejor eficienica y experiencia en los usuarios.
+Nosotros hemos propuesto nuestros objetivos en base a la metodología de objetivos smart:
 
-### Tecnica y Metodologia
+Nuestro objetivo principal es crear una red social con funcionalidades básicas (creación de un perfil, seguir perfiles y buscar perfiles) durante las
+siguientes 8 semanas con sprints intermedios. Nuestro proyecto debe implementarse en base a algoritmos eficientes capaces de soportar grandes cantidades de datos. 
 
-La metologia utilizada en este proyecto se basa en la metologia ágil. Hemos divido el proyecto en sprints, lo cuales nos permiten una mejor organicazion en cuestion a los objetivos.
+
+### Tecnica y Metodología
+
+La metodología utilizada en este proyecto se basa en la metodología ágil. Hemos dividido el proyecto en sprints, lo cuales nos permiten una mejor organización en cuestión a los objetivos.
 
 Las partes que componen cada sprint son:
 
