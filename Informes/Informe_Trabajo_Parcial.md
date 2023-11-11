@@ -1,6 +1,6 @@
 # Informe trabajo parcial
 
-## Descripción y Fundamentación del Problema   
+## Descripción y Fundamentación del Problema
 
 Según Freire & Ocaña (2021), la sobrecarga de algoritmos en las redes sociales, especialmente en las funciones de seguimiento, búsqueda y agregación, plantea un problema sustancial al inundar a los usuarios con recomendaciones y contenido poco relevantes, notificaciones intrusivas y una experiencia general de usuario abrumadora. Esta deficiencia algorítmica impacta negativamente la navegación, la privacidad y la satisfacción de los usuarios, subrayando la necesidad de desarrollar algoritmos más precisos y equilibrados que personalicen la experiencia de manera efectiva mientras se abordan las preocupaciones éticas y de privacidad para mejorar la calidad de las redes sociales en línea. Además, esta sobrecarga algorítmica también puede tener implicaciones más amplias en la sociedad, ya que influye en la forma en que las personas interactúan, consumen información y toman decisiones en un mundo cada vez más digitalizado. La calidad de los algoritmos en las redes sociales no solo afecta la satisfacción individual del usuario, sino que también puede influir en la polarización política, la difusión de información errónea y la formación de burbujas de filtro, lo que subraya aún más la importancia de abordar este problema de manera efectiva para mantener una comunidad en línea saludable y equilibrada.
 
@@ -61,7 +61,7 @@ En este contexto, cada nodo representa a un usuario, y cada arista simboliza una
 Nosotros hemos propuesto nuestros objetivos en base a la metodología de objetivos smart:
 
 Nuestro objetivo principal es crear una red social con funcionalidades básicas (creación de un perfil, seguir perfiles y buscar perfiles) durante las
-siguientes 8 semanas con sprints intermedios. Nuestro proyecto debe implementarse en base a algoritmos eficientes capaces de soportar grandes cantidades de datos. 
+siguientes 8 semanas con sprints intermedios. Nuestro proyecto debe implementarse en base a algoritmos eficientes capaces de soportar grandes cantidades de datos.
 
 
 ### Tecnica y Metodología
@@ -73,6 +73,29 @@ Las partes que componen cada sprint son:
 > Objetivos de sprints (Inicio)<br>
 > Seguimiento diario (Desarrollo)<br>
 > Revision de cumplimiento (Cierre)
+
+## Diseño del aplicativo
+
+### Proceso de diseño
+El diseño de la aplicación se basa en abordar la problemática identificada de la sobrecarga algorítmica en las redes sociales, según lo descrito por Freire & Ocaña (2021), esto se conseguirá al implementar un algoritmo de recomendación según contactos en común que procure recomedar unicamente aquellos usuarios relevantes.<br>
+
+Se seguirá una metodología de desarrollo ágil, con iteraciones regulares para adaptarse a los cambios y retroalimentación continua.<br>
+
+Para el diseño, las etapas incluirán la planificación inicial, el diseño conceptual, la implementación y pruebas continuas durante la publicación.
+
+### Ingeniería de Software
+
+La aplicación se desarrollará teniendo la modularidad como punto clave, esto con el objetivo de que todas las partes de la aplicación interactúen de manera eficiente, garantizando una fácil mantenibilidad y escalabilidad.
+
+### Análisis de Algoritmos
+
+Dado que la aplicación implica el uso de algorítmos para recomendar usuarios a los que seguir, se a decidido priorizar la precisión y relevancia de las recomendaciones.
+
+### Interfaz de usuario
+
+Debido a que el trabajo se implementará sobre el proyecto de la red social, se ha priorizado el tener una interfaz de usuario la cual nos permita otorgar al usuario una experiencia amigable e intuitiva.<br>
+
+La interfaz permitirá a los usuarios crear perfiles, seguir a otros usuarios y realizar búsquedas de perfiles de manera sencilla.
 
 ## Fuentes
 Freire, T., & Ocaña, P. (2021). Impacto de la gestión de redes sociales en las empresas gastrononómicas.
