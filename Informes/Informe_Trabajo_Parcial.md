@@ -77,25 +77,41 @@ Las partes que componen cada sprint son:
 ## Diseño del aplicativo
 
 ### Proceso de diseño
-El diseño de la aplicación se basa en abordar la problemática identificada de la sobrecarga algorítmica en las redes sociales, según lo descrito por Freire & Ocaña (2021), esto se conseguirá al implementar un algoritmo de recomendación según contactos en común que procure recomedar unicamente aquellos usuarios relevantes.<br>
+El diseño de la aplicación se centra en abordar la problemática identificada de la sobrecarga algorítmica en las redes sociales, como señalan Freire & Ocaña (2021).<br>
+Esto se logrará mediante la implementación de un algoritmo de recomendación basado en contactos en común, procurando que las sugerencias se limiten a usuarios relevantes.<br>
 
 Se seguirá una metodología de desarrollo ágil, con iteraciones regulares para adaptarse a los cambios y retroalimentación continua.<br>
 
-Para el diseño, las etapas incluirán la planificación inicial, el diseño conceptual, la implementación y pruebas continuas durante la publicación.
+Para el diseño, las etapas incluirán la planificación inicial, el diseño conceptual, la implementación y pruebas continuas hasta la fase de publicación.
 
 ### Ingeniería de Software
 
-La aplicación se desarrollará teniendo la modularidad como punto clave, esto con el objetivo de que todas las partes de la aplicación interactúen de manera eficiente, garantizando una fácil mantenibilidad y escalabilidad.
+La aplicación se desarrollará con un enfoque clave en la modularidad, esto con el objetivo de que todas las partes de la aplicación interactúen de manera eficiente. Asegurando mantener una fácil mantenibilidad y escalabilidad.
 
 ### Análisis de Algoritmos
 
-Dado que la aplicación implica el uso de algorítmos para recomendar usuarios a los que seguir, se a decidido priorizar la precisión y relevancia de las recomendaciones.
+Dado que la aplicación implica el uso de algorítmos para recomendar usuarios a los que seguir, se ha decidido priorizar la precisión y relevancia de estas recomendaciones.
 
 ### Interfaz de usuario
 
-Debido a que el trabajo se implementará sobre el proyecto de la red social, se ha priorizado el tener una interfaz de usuario la cual nos permita otorgar al usuario una experiencia amigable e intuitiva.<br>
+Dado que el algoritmo a desarrollar se implementará sobre una red social, se ha priorizado el desarrollo de una interfaz de usuario que ofrezca una experiencia amigable e intuitiva.<br>
 
 La interfaz permitirá a los usuarios crear perfiles, seguir a otros usuarios y realizar búsquedas de perfiles de manera sencilla.
+
+**Pagina de registro**:
+
+![Pagina de registro](Imagenes/pagina_registro.jpeg)
+
+
+**Pagina principal**:
+
+![Pagina principal](Imagenes/pagina_principal.jpeg)
+
+
+**Pagina perfil**:
+
+![Pagina perfil](Imagenes/pagina_perfil.jpeg)
+
 
 ## Fuentes
 Freire, T., & Ocaña, P. (2021). Impacto de la gestión de redes sociales en las empresas gastrononómicas.
