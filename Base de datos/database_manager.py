@@ -21,6 +21,22 @@ class SocialMediaDatabaseManager:
         country: str,
         phone_number: str,
     ) -> bool:
+        """
+        Agrega un usuario a la base de datos de usuarios.
+
+        Args:
+            username (str): Nombre de usuario.
+            email (str): Email del usuario.
+            password (str): Contraseña del usuario.
+            first_name (str): Nombre del usuario.
+            last_name (str): Apellido del usuario.
+            date_of_birth (date): Fecha de nacimiento del usuario.
+            country (str): País del usuario.
+            phone_number (str): Número de teléfono del usuario.
+
+        Returns:
+            bool: Devuelve True si la operación tuvo éxito, False en caso contrario.
+        """
         try:
             self.cursor.execute(
                 """
@@ -44,7 +60,16 @@ class SocialMediaDatabaseManager:
         except sqlite3.IntegrityError:
             return False
 
-    def remove_user(self, username) -> bool:
+    def remove_user(self, username: str) -> bool:
+        """
+        Elimina un usuario de la base de datos de usuarios.
+
+        Args:
+            username (str): Username del usuario que se quiere eliminar de la base de datos.
+
+        Returns:
+            bool: Devuelve True si la operación tuvo éxito, False en caso contrario.
+        """
         try:
             self.cursor.execute("DELETE FROM users WHERE username = ?", (username,))
             self.conn.commit()
@@ -54,6 +79,12 @@ class SocialMediaDatabaseManager:
             return False
 
     def get_all_users(self) -> tuple[bool, list[str]]:
+        """
+        Devuelve una lista con todos los usernames de los usuarios registrados.
+
+        Returns:
+            tuple[bool, list[str]]: Devuelve una tupla con un booleano que indica si la operación tuvo éxito y una lista con los usernames de los usuarios.
+        """
         try:
             self.cursor.execute("SELECT username FROM users")
             all_users = [row[0] for row in self.cursor.fetchall()]
@@ -62,7 +93,17 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False, []
 
-    def add_follow_relationship(self, username, username_followed) -> bool:
+    def add_follow_relationship(self, username: str, username_followed: str) -> bool:
+        """
+        Agrega una relación de follow de username a username_followed
+
+        Args:
+            username (str): Usuario que quiere seguir a username_followed.
+            username_followed (str): Usuario el cuál va a ser seguido por username.
+
+        Returns:
+            bool: Devuelve True si la operación tuvo éxito, False en caso contrario.
+        """
         try:
             self.cursor.execute(
                 """
@@ -78,7 +119,18 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False
 
-    def remove_follow_relationship(self, username, username_followed) -> bool:
+    def remove_follow_relationship(self, username: str, username_followed: str) -> bool:
+        """
+        Elimina la relación de follow entre username y username_followed
+        Si no existe la relación, no hace nada.
+
+        Args:
+            username (str): Usuario que desea eliminar la relación de follow.
+            username_followed (str): Usuario al que se `username` quiere dejar de seguir.
+
+        Returns:
+            bool: Devuelve True si la operación tuvo éxito, False en caso contrario.
+        """
         try:
             self.cursor.execute(
                 """
