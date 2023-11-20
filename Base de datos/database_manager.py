@@ -197,3 +197,44 @@ class SocialMediaDatabaseManager:
 
         except sqlite3.Error:
             return False, []
+
+    def get_user_info(self, username: str) -> tuple[bool, dict]:
+        """
+        Este método recibe como parámetro un username y devuelve
+        un diccionario con toda la información del usuario.
+
+        Args:
+            username (str): Usuario del que se quiere obtener la información.
+
+        Returns:
+            tuple[bool, dict]: Devuelve una tupla con un booleano que indica si la operación tuvo éxito y un diccionario con toda la información del usuario.
+        """
+        try:
+            self.cursor.execute(
+                """
+                SELECT *
+                FROM users
+                WHERE username = ?
+            """,
+                (username,),
+            )
+            user_info = self.cursor.fetchone()
+
+            return True, dict(
+                zip(
+                    [
+                        "username",
+                        "email",
+                        "password",
+                        "first_name",
+                        "last_name",
+                        "date_of_birth",
+                        "country",
+                        "phone_number",
+                    ],
+                    user_info[1:],
+                )
+            )
+
+        except:  # noqa: E722
+            return False, {}
