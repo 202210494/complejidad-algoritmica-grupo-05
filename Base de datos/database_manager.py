@@ -94,7 +94,17 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False
 
-    def get_following(self, username) -> tuple[bool, list[str]]:
+    def get_following(self, username: str) -> tuple[bool, list[str]]:
+        """
+        Este método recibe como parámetro un username y devuelve
+        una lista con todos los usuarios que ese usuario sigue.
+
+        Args:
+            username (str): Usuario del que se quieren conocer los usuarios que sigue.
+
+        Returns:
+            tuple[bool, list[str]]: Devuelve una tupla con un booleano que indica si la operación tuvo éxito y una lista con los usernames de los usuarios que sigue.
+        """
         try:
             self.cursor.execute(
                 """
@@ -110,7 +120,17 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False, []
 
-    def get_followers(self, username) -> tuple[bool, list[str]]:
+    def get_followers(self, username: str) -> tuple[bool, list[str]]:
+        """
+        Este método recibe como parámetro un username y devuelve
+        una lista con todos los usuarios que siguen a ese usuario.
+
+        Args:
+            username (str): Usuario del que se quieren conocer los seguidores.
+
+        Returns:
+            tuple[bool, list[str]]: Devuelve una tupla con un booleano que indica si la operación tuvo éxito y una lista con los usernames de los seguidores.
+        """
         try:
             self.cursor.execute(
                 """
