@@ -238,3 +238,76 @@ class SocialMediaDatabaseManager:
 
         except:  # noqa: E722
             return False, {}
+
+    def get_user_count(self) -> tuple[bool, int]:
+        """
+        Este método devuelve el número de usuarios registrados en la base de datos.
+
+        Returns:
+            tuple[bool, int]: Devuelve una tupla con un booleano que indica si la operación tuvo éxito y un entero con el número de usuarios registrados.
+        """
+        try:
+            self.cursor.execute("SELECT COUNT(*) FROM users")
+            user_count = self.cursor.fetchone()[0]
+            return True, user_count
+
+        except sqlite3.Error:
+            return False, 0
+
+    def add_post(
+        self,
+        username: str,
+        content: str,
+    ) -> bool:
+        """
+        Agrega un post a la base de datos.
+
+        Args:
+            username (str): Username del usuario que publica el post.
+            content (str): Contenido del post.
+
+        Returns:
+            bool: Devuelve True si la operación tuvo éxito, False en caso contrario.
+        """
+        try:
+            self.cursor.execute(
+                """
+                INSERT INTO posts (user, content)
+                VALUES (?,?)
+            """,
+                (username, content),
+            )
+
+            self.conn.commit()
+            return True
+
+        except sqlite3.Error:
+            return False
+
+    def get_user_posts(self, username: str) -> tuple[bool, list[dict]]:
+        """
+        Devuelve una lista con todos los posts de un usuario.
+
+        Args:
+            username (str): Username del usuario del que se quieren obtener los posts.
+
+        Returns:
+            tuple[bool, list[dict]]: Devuelve una tupla con un booleano que indica si la operación tuvo éxito y una lista con los posts del usuario.
+        """
+        try:
+            self.cursor.execute(
+                """
+                SELECT content, date_posted
+                FROM posts
+                WHERE user =?
+            """,
+                (username,),
+            )
+            posts = [
+                dict(zip(["content", "date_posted"], post))
+                for post in self.cursor.fetchall()
+            ]
+            return True, posts
+
+        except sqlite3.Error:
+            return False, []
