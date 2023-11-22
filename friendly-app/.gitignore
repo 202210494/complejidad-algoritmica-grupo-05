@@ -1,8 +1,3 @@
-.DS_Store
-social_media.db
-__pycache__
-lib
-
 # Logs
 logs
 *.log
