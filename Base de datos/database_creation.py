@@ -33,5 +33,17 @@ cursor.execute(
 """
 )
 
+# Crear tabla de posts
+cursor.execute(
+    """
+    CREATE TABLE IF NOT EXISTS posts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user TEXT NOT NULL,
+        content TEXT NOT NULL,
+        date_posted DATE DEFAULT CURRENT_TIMESTAMP
+    )
+"""
+)
+
 conn.commit()
 conn.close()
