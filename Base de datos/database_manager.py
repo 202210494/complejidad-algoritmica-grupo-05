@@ -311,3 +311,28 @@ class SocialMediaDatabaseManager:
 
         except sqlite3.Error:
             return False, []
+
+    def get_user_by_substring(self, substring: str) -> tuple[bool, list[str]]:
+        """
+        Devuelve una lista con todos los usernames que comienzan con un substring.
+
+        Args:
+            substring (str): Substring que los usernames deben comenzar con.
+
+        Returns:
+            tuple[bool, list[str]]: Devuelve una tupla con un booleano que indica si la operación tuvo éxito y una lista con los usernames que comienzan con el substring.
+        """
+        try:
+            self.cursor.execute(
+                """
+                SELECT username
+                FROM users
+                WHERE username LIKE?
+            """,
+                (f"{substring}%",),
+            )
+            users = [row[0] for row in self.cursor.fetchall()]
+            return True, users
+
+        except sqlite3.Error:
+            return False, []
