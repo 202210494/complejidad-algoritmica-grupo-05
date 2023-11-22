@@ -254,29 +254,29 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False, 0
 
-    def add_post(
-        self,
-        username: str,
-        content: str,
-    ) -> bool:
+    def add_post(self, username: str, content: str, date=None) -> bool:
         """
         Agrega un post a la base de datos.
 
         Args:
             username (str): Username del usuario que publica el post.
             content (str): Contenido del post.
+            date (datetime, opcional): Fecha en la que se publicó el post.
 
         Returns:
             bool: Devuelve True si la operación tuvo éxito, False en caso contrario.
         """
         try:
-            self.cursor.execute(
-                """
-                INSERT INTO posts (user, content)
-                VALUES (?,?)
-            """,
-                (username, content),
-            )
+            if date:
+                self.cursor.execute(
+                    "INSERT INTO posts (user, content, date_posted) VALUES (?,?,?)",
+                    (username, content, date),
+                )
+            else:
+                self.cursor.execute(
+                    "INSERT INTO posts (user, content) VALUES (?,?)",
+                    (username, content),
+                )
 
             self.conn.commit()
             return True
