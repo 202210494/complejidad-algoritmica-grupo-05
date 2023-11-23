@@ -306,7 +306,7 @@ class SocialMediaDatabaseManager:
             )
             posts = [
 
-                dict(zip(["user", "content", "date"], post))
+                dict(zip(["user", "content", "date_posted"], post))
                 for post in self.cursor.fetchall()
             ]
             return True, posts
@@ -355,31 +355,35 @@ class SocialMediaDatabaseManager:
                 if usuario_actual not in visitados:
                     visitados.add(usuario_actual)
 
-                    node_color = "gray"
-                    node_size = 40
-
                     if profundidad_actual < depth:
-                        if usuario_actual == path[0]:
-                            node_color = "green"
-                            node_size = 150
+                        if usuario_actual not in G.nodes:
+                            node_color = "gray"
+                            node_size = 40
 
-                        elif usuario_actual == path[-1]:
-                            node_color = "red"
-                            node_size = 150
+                            if usuario_actual == username:
+                                node_color = "green"
+                                node_size = 150
 
-                        elif usuario_actual in path:
-                            node_color = "yellow"
-                            node_size = 100
+                            elif usuario_actual == path[-1]:
+                                node_color = "red"
+                                node_size = 150
 
-                        G.add_node(
-                            usuario_actual,
-                            size=node_size,
-                            title=usuario_actual,
-                            labelHighlightBold=True,
-                            shape="dot",
-                            color=node_color,
-                        )
+                            elif usuario_actual in path:
+                                node_color = "yellow"
+                                node_size = 100
 
+                            G.add_node(
+                                usuario_actual,
+                                size=node_size,
+                                title=usuario_actual,
+                                labelHighlightBold=True,
+                                shape="dot",
+                                color=node_color,
+                            )
+                            
+                        node_color = "gray"
+                        node_size = 40
+                        
                         following = self.get_following(usuario_actual)[1]
 
                         for usuario_seguido in following:
@@ -403,6 +407,9 @@ class SocialMediaDatabaseManager:
                                     shape="dot",
                                     color=node_color,
                                 )
+                                                            
+                                node_color = "gray"
+                                node_size = 40
 
                             edge_color = "gray"
                             if (
@@ -430,4 +437,4 @@ class SocialMediaDatabaseManager:
                 shape="circle",
             )
 
-        G.write_html(f"grafos/{username}_{depth}.html")
+        G.write_html(f"Base de datos/grafos/{username}_{depth}.html")
