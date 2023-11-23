@@ -340,6 +340,7 @@ class SocialMediaDatabaseManager:
 
     def generate_user_graph(self, username: str, path: list[str]):
         depth = len(path) - 1
+        print(path)
 
         G = Network(directed=True, height="100%")
         G.barnes_hut(spring_length=80)
@@ -354,30 +355,35 @@ class SocialMediaDatabaseManager:
                 if usuario_actual not in visitados:
                     visitados.add(usuario_actual)
 
-                    node_color = "gray"
-                    node_size = 40
-
                     if profundidad_actual < depth:
-                        if usuario_actual == path[0]:
-                            node_color = "green"
-                            node_size = 150
+                        if usuario_actual not in G.nodes:
+                            node_color = "gray"
+                            node_size = 40
 
-                        elif usuario_actual == path[-1]:
-                            node_color = "red"
-                            node_size = 150
+                            if usuario_actual == username:
+                                node_color = "green"
+                                node_size = 150
 
-                        elif usuario_actual in path:
-                            node_color = "yellow"
-                            node_size = 100
+                            elif usuario_actual == path[-1]:
+                                node_color = "red"
+                                node_size = 150
 
-                        G.add_node(
-                            usuario_actual,
-                            size=node_size,
-                            title=usuario_actual,
-                            labelHighlightBold=True,
-                            shape="dot",
-                            color=node_color,
-                        )
+                            elif usuario_actual in path:
+                                node_color = "yellow"
+                                node_size = 100
+                                print(f"{usuario_actual} is in {path}")
+
+                            G.add_node(
+                                usuario_actual,
+                                size=node_size,
+                                title=usuario_actual,
+                                labelHighlightBold=True,
+                                shape="dot",
+                                color=node_color,
+                            )
+
+                            node_color = "gray"
+                            node_size = 40
 
                         following = self.get_following(usuario_actual)[1]
 
@@ -386,13 +392,14 @@ class SocialMediaDatabaseManager:
                                 node_color = "gray"
                                 node_size = 40
 
-                                if usuario_actual == path[-1]:
+                                if usuario_seguido == path[-1]:
                                     node_color = "red"
                                     node_size = 150
 
-                                elif usuario_actual in path:
+                                elif usuario_seguido in path:
                                     node_color = "yellow"
                                     node_size = 100
+                                    print(f"{usuario_seguido} is in {path}")
 
                                 G.add_node(
                                     usuario_seguido,
@@ -402,6 +409,9 @@ class SocialMediaDatabaseManager:
                                     shape="dot",
                                     color=node_color,
                                 )
+
+                                node_color = "gray"
+                                node_size = 40
 
                             edge_color = "gray"
                             if (
