@@ -16,3 +16,5 @@ def generar(max_posts: int = 10) -> bool:
 
     except:  # noqa: E722
         return False
+    
+
