@@ -4,9 +4,10 @@ from random import randint
 from datetime import date
 
 
-def Generate_graph(user, len):
+def Generate_graph(user, path):
    db = SocialMediaDatabaseManager()
-   db.generate_user_graph(user, len)
+   new_path = [node['name'] for node in path]
+   db.generate_user_graph(user, new_path)
    return
 
 def bfs_find_paths(start_user, end_user):
@@ -26,7 +27,7 @@ def bfs_find_paths(start_user, end_user):
                 end_user = parents[end_user]
                 path.insert(0, {'name': end_user})
 
-            Generate_graph(start_user, len(path))
+            Generate_graph(start_user, path)
             return path
 
 
@@ -127,4 +128,9 @@ def checkFollow(user, to_follow):
 
 #solo para probar si funciona 
 def main():
-  Generate_graph("aaron42", 1)
+  db = SocialMediaDatabaseManager()
+  #print(db.get_all_users())
+  print(obtener_info_usuario(db.get_all_users()[1][0]))
+  #Generate_graph("aaron42", 1)
+
+main()

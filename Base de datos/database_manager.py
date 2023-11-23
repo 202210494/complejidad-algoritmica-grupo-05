@@ -305,6 +305,7 @@ class SocialMediaDatabaseManager:
                 (username,),
             )
             posts = [
+
                 dict(zip(["user", "content", "date_posted"], post))
                 for post in self.cursor.fetchall()
             ]
@@ -340,9 +341,8 @@ class SocialMediaDatabaseManager:
 
     def generate_user_graph(self, username: str, path: list[str]):
         depth = len(path) - 1
-        print(path)
 
-        G = Network(directed=True, height="100%")
+        G = Network(directed=True, height="100vh")
         G.barnes_hut(spring_length=80)
 
         if depth > 0:
@@ -371,7 +371,6 @@ class SocialMediaDatabaseManager:
                             elif usuario_actual in path:
                                 node_color = "yellow"
                                 node_size = 100
-                                print(f"{usuario_actual} is in {path}")
 
                             G.add_node(
                                 usuario_actual,
@@ -381,10 +380,10 @@ class SocialMediaDatabaseManager:
                                 shape="dot",
                                 color=node_color,
                             )
-
-                            node_color = "gray"
-                            node_size = 40
-
+                            
+                        node_color = "gray"
+                        node_size = 40
+                        
                         following = self.get_following(usuario_actual)[1]
 
                         for usuario_seguido in following:
@@ -399,7 +398,6 @@ class SocialMediaDatabaseManager:
                                 elif usuario_seguido in path:
                                     node_color = "yellow"
                                     node_size = 100
-                                    print(f"{usuario_seguido} is in {path}")
 
                                 G.add_node(
                                     usuario_seguido,
@@ -409,7 +407,7 @@ class SocialMediaDatabaseManager:
                                     shape="dot",
                                     color=node_color,
                                 )
-
+                                                            
                                 node_color = "gray"
                                 node_size = 40
 
