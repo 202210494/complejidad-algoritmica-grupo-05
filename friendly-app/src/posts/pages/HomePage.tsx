@@ -28,6 +28,7 @@ export const HomePage = (): ReactElement => {
       console.log('me estoy renderizando')
     })
   }, [])
+  console.log(post)
 
   //GET USER FRIENDS
   const [friends, setFriends] = useState([])
