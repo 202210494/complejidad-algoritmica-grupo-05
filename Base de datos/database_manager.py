@@ -298,14 +298,14 @@ class SocialMediaDatabaseManager:
         try:
             self.cursor.execute(
                 """
-                SELECT content, date_posted
+                SELECT user, content, date_posted
                 FROM posts
                 WHERE user =?
             """,
                 (username,),
             )
             posts = [
-                dict(zip(["content", "date_posted"], post))
+                dict(zip(["user", "content", "date_posted"], post))
                 for post in self.cursor.fetchall()
             ]
             return True, posts
