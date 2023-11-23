@@ -255,29 +255,29 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False, 0
 
-    def add_post(
-        self,
-        username: str,
-        content: str,
-    ) -> bool:
+    def add_post(self, username: str, content: str, date=None) -> bool:
         """
         Agrega un post a la base de datos.
 
         Args:
             username (str): Username del usuario que publica el post.
             content (str): Contenido del post.
+            date (datetime, opcional): Fecha en la que se publicó el post.
 
         Returns:
             bool: Devuelve True si la operación tuvo éxito, False en caso contrario.
         """
         try:
-            self.cursor.execute(
-                """
-                INSERT INTO posts (user, content)
-                VALUES (?,?)
-            """,
-                (username, content),
-            )
+            if date:
+                self.cursor.execute(
+                    "INSERT INTO posts (user, content, date_posted) VALUES (?,?,?)",
+                    (username, content, date),
+                )
+            else:
+                self.cursor.execute(
+                    "INSERT INTO posts (user, content) VALUES (?,?)",
+                    (username, content),
+                )
 
             self.conn.commit()
             return True
@@ -298,14 +298,15 @@ class SocialMediaDatabaseManager:
         try:
             self.cursor.execute(
                 """
-                SELECT content, date_posted, user
+                SELECT user, content, date_posted
                 FROM posts
                 WHERE user =?
             """,
                 (username,),
             )
             posts = [
-                dict(zip(["content", "date", "user"], post))
+
+                dict(zip(["user", "content", "date_posted"], post))
                 for post in self.cursor.fetchall()
             ]
             return True, posts
@@ -337,7 +338,7 @@ class SocialMediaDatabaseManager:
 
         except sqlite3.Error:
             return False, []
-        
+
     def generate_user_graph(self, username: str, depth: int = 3):
         G = Network(directed=True, height="100%")
         G.barnes_hut(spring_length=80)
@@ -375,4 +376,4 @@ class SocialMediaDatabaseManager:
                         G.add_edge(usuario_actual, usuario_seguido)
                         queue.append((usuario_seguido, (profundidad_actual + 1)))
 
-        G.write_html(f"grafos/{username}_{depth}.html")
+        G.write_html(f"Base de datos/grafos/{username}_{depth}.html")
