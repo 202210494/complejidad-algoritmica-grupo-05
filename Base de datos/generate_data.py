@@ -5,6 +5,6 @@ import posts_generation
 
 
 assert database_creation.generar()
-assert user_generation.generar()
-assert followers_generation.generar()
+assert user_generation.generar(3500)
+assert followers_generation.generar(20)
 assert posts_generation.generar()

@@ -306,7 +306,7 @@ class SocialMediaDatabaseManager:
             )
             posts = [
 
-                dict(zip(["user", "content", "date_posted"], post))
+                dict(zip(["user", "content", "date"], post))
                 for post in self.cursor.fetchall()
             ]
             return True, posts
@@ -339,41 +339,95 @@ class SocialMediaDatabaseManager:
         except sqlite3.Error:
             return False, []
 
-    def generate_user_graph(self, username: str, depth: int = 3):
-        G = Network(directed=True, height="100%")
+    def generate_user_graph(self, username: str, path: list[str]):
+        depth = len(path) - 1
+
+        G = Network(directed=True, height="100vh")
         G.barnes_hut(spring_length=80)
 
-        visitados = set()
-        queue: list[tuple[str, int]] = [(username, 0)]
+        if depth > 0:
+            visitados = set()
+            queue: list[tuple[str, int]] = [(username, 0)]
 
-        while queue:
-            usuario_actual, profundidad_actual = queue.pop(0)
+            while queue:
+                usuario_actual, profundidad_actual = queue.pop(0)
 
-            if usuario_actual not in visitados:
-                visitados.add(usuario_actual)
+                if usuario_actual not in visitados:
+                    visitados.add(usuario_actual)
 
-                if profundidad_actual < depth:
-                    G.add_node(
-                        usuario_actual,
-                        size=50,
-                        title=usuario_actual,
-                        labelHighlightBold=True,
-                        shape="circle",
-                    )
+                    node_color = "gray"
+                    node_size = 40
 
-                    following = self.get_following(usuario_actual)[1]
+                    if profundidad_actual < depth:
+                        if usuario_actual == path[0]:
+                            node_color = "green"
+                            node_size = 150
 
-                    for usuario_seguido in following:
-                        if usuario_seguido not in G.nodes:
-                            G.add_node(
+                        elif usuario_actual == path[-1]:
+                            node_color = "red"
+                            node_size = 150
+
+                        elif usuario_actual in path:
+                            node_color = "yellow"
+                            node_size = 100
+
+                        G.add_node(
+                            usuario_actual,
+                            size=node_size,
+                            title=usuario_actual,
+                            labelHighlightBold=True,
+                            shape="dot",
+                            color=node_color,
+                        )
+
+                        following = self.get_following(usuario_actual)[1]
+
+                        for usuario_seguido in following:
+                            if usuario_seguido not in G.nodes:
+                                node_color = "gray"
+                                node_size = 40
+
+                                if usuario_seguido == path[-1]:
+                                    node_color = "red"
+                                    node_size = 150
+
+                                elif usuario_seguido in path:
+                                    node_color = "yellow"
+                                    node_size = 100
+
+                                G.add_node(
+                                    usuario_seguido,
+                                    size=node_size,
+                                    title=usuario_seguido,
+                                    labelHighlightBold=True,
+                                    shape="dot",
+                                    color=node_color,
+                                )
+
+                            edge_color = "gray"
+                            if (
+                                usuario_actual in path
+                                and usuario_seguido in path
+                                and path.index(usuario_actual)
+                                == path.index(usuario_seguido) - 1
+                            ):
+                                edge_color = "green"
+
+                            G.add_edge(
+                                usuario_actual,
                                 usuario_seguido,
-                                size=50,
-                                title=usuario_seguido,
-                                labelHighlightBold=True,
-                                shape="circle",
+                                color=edge_color,
+                                width=1 if edge_color == "gray" else 10,
                             )
+                            queue.append((usuario_seguido, (profundidad_actual + 1)))
 
-                        G.add_edge(usuario_actual, usuario_seguido)
-                        queue.append((usuario_seguido, (profundidad_actual + 1)))
+        else:
+            G.add_node(
+                username,
+                size=50,
+                title=username,
+                labelHighlightBold=True,
+                shape="circle",
+            )
 
-        G.write_html(f"Base de datos/grafos/{username}_{depth}.html")
+        G.write_html(f"grafos/{username}_{depth}.html")
