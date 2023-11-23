@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import date
+from pyvis.network import Network
 
 
 class SocialMediaDatabaseManager:
@@ -336,3 +337,46 @@ class SocialMediaDatabaseManager:
 
         except sqlite3.Error:
             return False, []
+
+    def generate_user_graph(self, username: str, depth: int = 3):
+        G = Network(directed=True, height="100%")
+        G.barnes_hut(spring_length=80)
+
+        visitados = set()
+        queue: list[tuple[str, int]] = [(username, 0)]
+
+        while queue:
+            usuario_actual, profundidad_actual = queue.pop(0)
+
+            if usuario_actual not in visitados:
+                visitados.add(usuario_actual)
+
+                if profundidad_actual < depth:
+                    G.add_node(
+                        usuario_actual,
+                        size=50,
+                        title=usuario_actual,
+                        labelHighlightBold=True,
+                        shape="circle",
+                    )
+
+                    following = self.get_following(usuario_actual)[1]
+
+                    for usuario_seguido in following:
+                        if usuario_seguido not in G.nodes:
+                            G.add_node(
+                                usuario_seguido,
+                                size=50,
+                                title=usuario_seguido,
+                                labelHighlightBold=True,
+                                shape="circle",
+                            )
+
+                        G.add_edge(usuario_actual, usuario_seguido)
+                        queue.append((usuario_seguido, (profundidad_actual + 1)))
+
+        G.write_html(f"Base de datos/grafos/{username}_{depth}.html")
+
+
+dsa = SocialMediaDatabaseManager()
+dsa.generate_user_graph("brownstephanie", 2)
