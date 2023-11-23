@@ -376,7 +376,3 @@ class SocialMediaDatabaseManager:
                         queue.append((usuario_seguido, (profundidad_actual + 1)))
 
         G.write_html(f"Base de datos/grafos/{username}_{depth}.html")
-
-
-dsa = SocialMediaDatabaseManager()
-dsa.generate_user_graph("brownstephanie", 2)
