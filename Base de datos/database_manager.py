@@ -305,6 +305,7 @@ class SocialMediaDatabaseManager:
                 (username,),
             )
             posts = [
+
                 dict(zip(["user", "content", "date_posted"], post))
                 for post in self.cursor.fetchall()
             ]
