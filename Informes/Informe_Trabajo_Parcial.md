@@ -112,7 +112,7 @@ La interfaz permitirá a los usuarios crear perfiles, seguir a otros usuarios y 
 
 ![Pagina perfil](Imagenes/pagina_perfil.jpeg)
 
-### Reporte
+## Reporte
 
 Durante el proceso de desarrollo, nos enfocamos en la implementación de métodos eficientes para garantizar el rendimiento y la escalabilidad de la red social propuesta. Se han creado una serie de métodos clave para abordar los desafíos identificados:
 
