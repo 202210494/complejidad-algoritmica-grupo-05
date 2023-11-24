@@ -116,19 +116,19 @@ La interfaz permitirá a los usuarios crear perfiles, seguir a otros usuarios y 
 
 Durante el proceso de desarrollo, nos enfocamos en la implementación de métodos eficientes para garantizar el rendimiento y la escalabilidad de la red social propuesta. Se han creado una serie de métodos clave para abordar los desafíos identificados:
 
-### Método de Recomendación:
+1) Método de Recomendación:
 
 Diseñamos un algoritmo de recomendación basado en conexiones comunes para sugerir usuarios relevantes a seguir. Este método se centra en la precisión y relevancia de las recomendaciones, utilizando datos de relaciones entre usuarios.
 
-### Método de Creación de Perfiles:
+2) Método de Creación de Perfiles:
 
 Implementamos un método robusto para la creación de perfiles de usuario, teniendo en cuenta la información esencial y garantizando una interfaz de registro intuitiva.
 
-### Método de Búsqueda de Perfiles:
+3) Método de Búsqueda de Perfiles:
 
 Desarrollamos un algoritmo de búsqueda eficiente que permite a los usuarios encontrar perfiles de manera rápida y precisa, mejorando la usabilidad de la plataforma.
 
-### Método de Visualización de Datos:
+4) Método de Visualización de Datos:
 
 Se crearon métodos para visualizar datos de manera efectiva, utilizando herramientas como pyvis para representar gráficamente las relaciones entre usuarios, facilitando la comprensión y el análisis.
 
